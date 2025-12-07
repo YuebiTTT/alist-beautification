@@ -1,58 +1,164 @@
 <!-- v3 -->
 
-head.html<!-- 引入自定义字体 -->
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/lxgwwenkai-regular.min.css">
-
 <style>
-    /* 移除原生视频控件 */
-    video::-webkit-media-controls {
-        display: none;
-    }
+  /* 移除原生视频控件 */
+  video::-webkit-media-controls {
+      display: none;
+  }
 
-    /* 设置背景图片样式 */
-    body {
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        background-position: center;
-    }
+  /* 设置背景图片样式 */
+  body {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+  }
 
-    /* 在此处的url()里修改背景图片地址 */
-    /* 加了个深色遮罩，爱护你的眼睛 */
-    body.hope-ui-dark {
-        background-color: rgb(32, 36, 37);
-        background-image: linear-gradient(rgba(32, 36, 37, 0.7), rgba(32, 36, 37, 0.7)), url('./d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/dark.png?sign=-9WWgNqQRHn9cj5FFm2vtbBLg8wnQP4hobjYDMan5zc=:0');
-    }
+  /* 加了个深色遮罩，爱护你的眼睛 */
+  body.hope-ui-dark {
+      background-color: rgb(32, 36, 37);
+  }
 
-    /* 在此处的url()里修改背景图片地址 */
-    body.hope-ui-light {
-        background-color: #ffffff;
-        background-image: url('./d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/light.png?sign=F3VkRAub7Hz9PPL20sqol4BuQd8FOaQeXxfQo0LRIFo=:0');
-    }
+  body.hope-ui-light {
+      background-color: #ffffff;
+  }
 
-    /* 统一站点公告的样式 */
-    .hope-ui-light .hope-c-PJLV-ikJQsXT-css {
-        background: rgba(255, 255, 255, 0.8) !important;
-        backdrop-filter: blur(0) !important;
-    }
+  /* 统一站点公告的样式 */
+  .hope-ui-light .hope-c-PJLV-ikJQsXT-css {
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(0) !important;
+  }
 
-    .hope-ui-dark .hope-c-PJLV-ikJQsXT-css {
-        background: rgb(32, 36, 37) !important;
-        backdrop-filter: blur(0) !important;
-    }
+  .hope-ui-dark .hope-c-PJLV-ikJQsXT-css {
+      background: rgb(32, 36, 37) !important;
+      backdrop-filter: blur(0) !important;
+  }
 
-    /* 自定义字体 */
-    * {
-        font-family: "LXGW WenKai", sans-serif;
-    }
+  /* 自定义字体 */
+  * {
+      font-family: "LXGW WenKai", sans-serif;
+  }
+
+  /* 隐藏底部 */
+  .footer {
+      display: none !important;
+  }
+
+  dibu {
+      border-top: 0px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+  }
+  .App {
+      min-height: 85vh;
+  }
+  .table {
+      margin: auto;
+  }
 </style>
 
-<!-- 看板娘 -->
-<script src="https://l2d.mmoe.work/dist/autoload.js" async></script>
+<script>
+ (function() {
 
-<script
-    src="https://s4.zstatic.net/ajax/libs/js-polyfills/0.1.43/polyfill.min.js?features=String.prototype.replaceAll"></script>
+   // 判断是否内网访问
+   const isInternal = /^(10\.|172\.16\.|192\.168\.|127\.0\.0\.1)/.test(window.location.hostname);
+  // 输出判断结果
+  console.log('当前访问环境：', isInternal ? '内网' : '外网');
+   // 资源映射表
+   const resources = {
+     // CSS 样式
+     styles: [
+       { internal: 'http://10.88.202.73:5244/d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/css/lxgwwenkai-regular.min.css?sign=vSAIzOjw-kWSyxeQa_bdAKbSMHF1KuiWNi-SIt6W_VA=:0', external: 'https://s4.zstatic.net/ajax/libs/lxgw-wenkai-webfont/1.7.0/lxgwwenkai-regular.min.css' },1
+       //{ internal: 'https://example.com/internal/style.css', external: 'https://example.com/external/style.css' }
+     ],
 
+     // JS 脚本
+     scripts: [
+       //{ internal: 'https://l2d.mmoe.work/dist/autoload.js', external: 'https://l2d.mmoe.work/dist/autoload.js' },
+       { internal: 'http://10.88.202.73:5244/d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/js/polyfill.min.js?sign=XPgfrPIH4OkN26kAEeHlPGxx67RL11e6GVYg2WCywos=:0&features=String.prototype.replaceAll', external: 'https://s4.zstatic.net/ajax/libs/js-polyfills/0.1.43/polyfill.min.js?features=String.prototype.replaceAll' }
+     ],
+
+     // 背景图
+     background: {
+       light: {
+         internal: 'http://10.88.202.73:5244/d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/light.png?sign=F3VkRAub7Hz9PPL20sqol4BuQd8FOaQeXxfQo0LRIFo=:0',
+         external: 'http://26.194.77.130:5244/d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/light.png?sign=F3VkRAub7Hz9PPL20sqol4BuQd8FOaQeXxfQo0LRIFo=:0'
+       }
+     }
+   };
+
+   // 动态加载 CSS
+   function loadStyles() {
+     resources.styles.forEach(item => {
+       const url = isInternal ? item.internal : item.external;
+       const link = document.createElement('link');
+       link.rel = 'stylesheet';
+       link.href = url;
+       document.head.appendChild(link);
+     });
+   }
+
+   // 动态加载 JS
+   function loadScripts() {
+     resources.scripts.forEach(item => {
+       const url = isInternal ? item.internal : item.external;
+       const script = document.createElement('script');
+       script.src = url;
+       document.body.appendChild(script);
+     });
+   }
+
+   // 设置背景图
+   function setBackground() {
+     const body = document.querySelector('body.hope-ui-light');
+     if (body) {
+       const bgUrl = isInternal  
+         ? resources.background.light.internal  
+         : resources.background.light.external;
+       body.style.backgroundImage = `url('${bgUrl}')`;
+     }
+   }
+
+   // 执行CSS加载（可以立即执行，因为只操作head）
+   loadStyles();
+
+   // 确保DOM完全加载后执行涉及body的操作
+   function init() {
+     loadScripts();
+     setBackground();
+
+     // 监听主题变化
+     const observer = new MutationObserver((mutations) => {
+       mutations.forEach((mutation) => {
+         if (mutation.attributeName === 'class') {
+           // 重新设置背景图以适应主题变化
+           setBackground();
+           // 设置深色主题背景
+           const darkBody = document.querySelector('body.hope-ui-dark');
+           if (darkBody) {
+             const bgUrl = isInternal 
+               ? 'http://10.88.202.73:5244/d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/dark.png?sign=-9WWgNqQRHn9cj5FFm2vtbBLg8wnQP4hobjYDMan5zc=:0' 
+               : 'https://t.alcy.cc/moez';
+             darkBody.style.backgroundImage = `linear-gradient(rgba(32, 36, 37, 0.7), rgba(32, 36, 37, 0.7)), url('${bgUrl}')`;
+           }
+         }
+       });
+     });
+
+     observer.observe(document.body, { attributes: true });
+   }
+
+   // 检查DOM是否已加载完成
+   if (document.readyState === 'loading') {
+     document.addEventListener('DOMContentLoaded', init);
+   } else {
+     init();
+   }
+ })();
+</script>
 <script>
     // 实现先显示内网默认背景，同时后台加载外网图片，加载成功后替换
     (() => {
@@ -78,33 +184,6 @@ head.html<!-- 引入自定义字体 -->
                 };
                 img.src = externalImgUrl;
             };
-            
-            // 监听主题变化
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.attributeName === 'class') {
-                        // 主题变化时，先重置为对应主题的内网默认背景
-                        const body = document.body;
-                        const isDark = body.classList.contains('hope-ui-dark');
-                        const internalImgUrl = isDark 
-                            ? './d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/dark.png?sign=-9WWgNqQRHn9cj5FFm2vtbBLg8wnQP4hobjYDMan5zc=:0' 
-                            : './d/%E5%AD%A6%E7%94%9F%E7%9B%AE%E5%BD%95/alist%E9%BB%98%E8%AE%A4%E8%83%8C%E6%99%AF/light.png?sign=F3VkRAub7Hz9PPL20sqol4BuQd8FOaQeXxfQo0LRIFo=:0';
-                        
-                        if (isDark) {
-                            body.style.backgroundImage = `linear-gradient(rgba(32, 36, 37, 0.7), rgba(32, 36, 37, 0.7)), url('${internalImgUrl}')`;
-                        } else {
-                            body.style.backgroundImage = `url('${internalImgUrl}')`;
-                        }
-                        
-                        // 然后在后台加载对应主题的外网图片
-                        loadExternalBackground();
-                    }
-                });
-            });
-            
-            observer.observe(document.body, { attributes: true });
-            
-            // 初始加载：先显示内网默认背景，然后在后台加载外网图片
             loadExternalBackground();
         };
         

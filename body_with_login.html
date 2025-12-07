@@ -1,5 +1,64 @@
 <!-- v5-login -->
-
+<!-- 延迟加载 -->
+<div id="customize" style="display: none;">
+    <div>
+        <br />
+        <center class="dibu">
+            <div style=" line-height: 20px;font-size: 9pt;font-weight: bold;">
+                <span>
+                    <span style="color: rgb(154 193 216); font-weight: bold;" id="hitokoto">
+                        <a href="#" id="hitokoto_text">
+                            "人间忽晚，山河已秋！"
+                        </a>
+                    </span>
+                </span>
+            </div>
+ 
+            <!-- 底部链接 -->
+            <div style="font-size: 13px; font-weight: bold;">
+                <span class="nav-item">
+                    <a class="nav-link" href="http://10.88.202.73" target="_blank">
+                        <i class="fa-duotone fa-envelope-open" style="color:#409EFF" aria-hidden="true">
+                        </i>
+                        学生目录 |
+                    </a>
+                </span>
+                
+                <!--后台入口-->
+                <span class="nav-item">
+                    <a class="nav-link" href="/@manage" target="_blank">
+                        <i class="fa-solid fa-folder-gear" style="color:#409EFF;" aria-hidden="true">
+                        </i>
+                        管理 |
+                    </a>
+                </span>
+                <!--版权，请尊重作者-->
+                <span class="nav-item">
+                    <a class="nav-link" href="https://github.com/Xhofe/alist" target="_blank">
+                        <i class="fa-solid fa-copyright" style="color:#409EFF;" aria-hidden="true">
+                        </i>
+                        Alist
+                    </a>
+                </span>
+            </div>
+        </center>
+        <br />
+    </div>
+ 
+    <!--一言API-->
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+<!--延迟加载范围到这里结束-->
+</div>
+ 
+<!-- 延迟加载JS -->
+<script>
+    let interval = setInterval(() => {
+        if (document.querySelector(".footer")) {
+            document.querySelector("#customize").style.display = "";
+            clearInterval(interval);
+        }
+    }, 200);
+</script>
 <!-- 修正部分区域的透明 -->
 <style>
     .hope-ui-light,

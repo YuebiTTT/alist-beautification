@@ -111,7 +111,7 @@ static darkBgColor = 'rgba(32, 36, 37, 0.8)';
 
 ## 🤝 贡献
 
-欢迎提交 Issue 和 Pull Request，一起改进这个项目！
+欢迎提交 Issue 和 Pull Request，一起做一个内外网自动切换的资源加载系统改进这个项目！
 
 ## ⭐ 支持
 
